@@ -17,7 +17,7 @@ class TestUtilsText(TestCase):
             output = value
         self.assertEqual(function(value), output)
 
-    def test_escape(self):
+    def test_unicodify(self):
         f = text.unicodify
         items = (
             ('&', '&amp;'),
@@ -26,15 +26,9 @@ class TestUtilsText(TestCase):
             ('"', '&quot;'),
             ("'", '&#39;'),
         )
-        # Substitution patterns for testing the above items.
-        patterns = ("%s", "asdf%sfdsa", "%s1", "1%sb")
+
         for value, output in items:
-            for pattern in patterns:
-                self.check_output(f, pattern % value, pattern % output)
-            # Check repeated values.
-            self.check_output(f, value * 2, output * 2)
-        # Verify it doesn't double replace &.
-        self.check_output(f, '<&', '&lt;&amp;')
+            self.check_output(f, value, output)
 
     def test_remove_spaces(self):
         f = text.remove_spaces
@@ -43,10 +37,18 @@ class TestUtilsText(TestCase):
             ('new word ', 'newword'),
             ('new word\n\rlol', 'newwordlol'),
         )
-        # Substitution patterns for testing the above items.
-        patterns = ("%s", "asdf%sfdsa", "%s1", "1%sb")
+
         for value, output in items:
-            for pattern in patterns:
-                self.check_output(f, pattern % value, pattern % output)
-            # Check repeated values.
-            self.check_output(f, value * 2, output * 2)
+            self.check_output(f, value, output)
+
+    def test_fix_student_name(self):
+        f = text.fix_student_name
+        items = (
+            ("p v r reddy", "P. V. R. Reddy"),
+            ("p v r redd", "P. V. R. Redd"),
+            ("pankaj    singh", "Pankaj Singh"),
+            ("ram\n chandra", "Ram Chandra"),
+        )
+
+        for value, output in items:
+            self.check_output(f, value, output)

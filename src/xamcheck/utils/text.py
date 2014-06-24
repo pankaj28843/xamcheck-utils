@@ -43,4 +43,5 @@ def fix_student_name(name):
         new_parts.append(part.title())
 
     name = ' '.join(new_parts)
+    name = name
     return name
