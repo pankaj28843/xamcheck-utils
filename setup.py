@@ -1,21 +1,32 @@
 import os
 
-from setuptools import find_packages, setup
 
-# Utility function to read the README file.
-# Used for the long_description.  It's nice, because now 1) we have a top level
-# README file and 2) it's easier to type in the README file than to put a raw
-# string in below ...
+from setuptools import find_packages, setup
+from setuptools.command.test import test as TestCommand
 
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
+class NoseTestCommand(TestCommand):
+    # Inspired by the example at https://pytest.org/latest/goodpractises.html
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        # Run nose ensuring that argv simulates running nosetests directly
+        import nose
+        nose.run_exit(argv=['nosetests'])
+
 TESTS_REQUIRE = [
     'coverage',
     'nose',
 ]
+
 
 setup(
     name="xamcheck.utils",
@@ -42,8 +53,9 @@ setup(
         'Django',
         'setuptools',
     ],
+    cmdclass={'test': NoseTestCommand},
     tests_require=TESTS_REQUIRE,
-    test_suite = 'nose.collector',
+    test_suite = "nose.collector",
     include_package_data=True,
     zip_safe=False,
 )

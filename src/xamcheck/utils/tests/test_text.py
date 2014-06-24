@@ -52,3 +52,17 @@ class TestUtilsText(TestCase):
 
         for value, output in items:
             self.check_output(f, value, output)
+
+    def test_soretd_nicely(self):
+        """
+        Checking whether the function sorted_nicely works properly
+        for different types of test cases
+        """
+
+        f = text.sorted_nicely
+        items = (
+            (['1', '11', '2', '3', '21'], ['1', '2', '3', '11', '21']),
+        )
+
+        for value, output in items:
+            self.check_output(f, value, output)

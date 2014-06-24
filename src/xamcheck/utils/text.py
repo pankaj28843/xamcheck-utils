@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import itertools
 
 import re
 
@@ -23,6 +24,17 @@ def unicodify(s, strip=True):
 
 
 def remove_spaces(s):
+    """ Removes spaces from a given string using regular expressions
+
+    here is an extra line
+    >>> remove_spaces("   foo  \\n bar \\t moo")
+    u'foobarmoo'
+
+    yet another line then we will add a doctest
+
+    >>> remove_spaces("foo lo bar         ")
+    u'foolobar'
+    """
     return ''.join(re.split(r'\s', s))
 
 
@@ -33,6 +45,10 @@ def fix_name(name):
 
 
 def fix_student_name(name):
+    """ Fix a student's name
+    >>> fix_student_name("p v r reddy")
+    u'P. V. R. Reddy'
+    """
     name = fix_name(name)
     parts = name.split()
     new_parts = []
@@ -45,3 +61,15 @@ def fix_student_name(name):
     name = ' '.join(new_parts)
     name = name
     return name
+
+
+def sorted_nicely(l):
+    """Sort the given list in the way that humans expect.
+    >>> sorted_nicely(["Q1", "Q3", "Q2", "Q20", "Q11"])
+    [u'Q1', u'Q2', u'Q3', u'Q11', u'Q20']
+    """
+    l = list(l)
+
+    convert = lambda text: int(text) if text.isdigit() else text
+    alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
+    return sorted(l, key=alphanum_key)
