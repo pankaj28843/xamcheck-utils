@@ -1,21 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from unittest import TestCase
-
 from xamcheck.utils import text
+
+from .base import TestCase
 
 
 class TestUtilsText(TestCase):
-
-    def check_output(self, function, value, output=None):
-        """
-        Check that function(value) equals output.  If output is None,
-        check that function(value) equals value.
-        """
-        if output is None:
-            output = value
-        self.assertEqual(function(value), output)
 
     def test_unicodify(self):
         f = text.unicodify
@@ -62,6 +53,16 @@ class TestUtilsText(TestCase):
         f = text.sorted_nicely
         items = (
             (['1', '11', '2', '3', '21'], ['1', '2', '3', '11', '21']),
+        )
+
+        for value, output in items:
+            self.check_output(f, value, output)
+
+    def test_fix_name(self):
+        f = text.fix_name
+        items = (
+            ("Mahatma    Gandhi", "Mahatma Gandhi"),
+            ("Air-base", "Air - base"),
         )
 
         for value, output in items:

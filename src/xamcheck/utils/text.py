@@ -8,8 +8,9 @@ from django.utils.html import escape
 
 
 def unicodify(s, strip=True):
-    """
-    update this
+    """ Encodes given string to unicode
+    >>> unicodify(u'\u00c3')
+    '\\xc3\\x83'
     """
 
     s = escape(s)
@@ -39,6 +40,12 @@ def remove_spaces(s):
 
 
 def fix_name(name):
+    """ Removes unwanted spaces in a name
+    >>> fix_name("hello-world")
+    u'hello - world'
+    >>> fix_name("hello          world")
+    u'hello world'
+    """
     name = re.sub("\s*-\s*", " - ", name)
     name = re.sub("\s+", " ", name)
     return name
