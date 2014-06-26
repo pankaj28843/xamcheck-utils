@@ -19,7 +19,7 @@ class TestUtilsText(TestCase):
         )
 
         for value, output in items:
-            self.check_output(f, value, output)
+            self.check_output(f, output, value)
 
     def test_remove_spaces(self):
         f = text.remove_spaces
@@ -30,7 +30,7 @@ class TestUtilsText(TestCase):
         )
 
         for value, output in items:
-            self.check_output(f, value, output)
+            self.check_output(f, output, value)
 
     def test_fix_student_name(self):
         f = text.fix_student_name
@@ -42,7 +42,7 @@ class TestUtilsText(TestCase):
         )
 
         for value, output in items:
-            self.check_output(f, value, output)
+            self.check_output(f, output, value)
 
     def test_soretd_nicely(self):
         """
@@ -56,7 +56,7 @@ class TestUtilsText(TestCase):
         )
 
         for value, output in items:
-            self.check_output(f, value, output)
+            self.check_output(f, output, value)
 
     def test_fix_name(self):
         f = text.fix_name
@@ -66,4 +66,4 @@ class TestUtilsText(TestCase):
         )
 
         for value, output in items:
-            self.check_output(f, value, output)
+            self.check_output(f, output, value)
