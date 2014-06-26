@@ -88,3 +88,19 @@ class TestOrderedSet(TestCase):
 
         ordered_set.pop()
         self.assertEqual(len(ordered_set), 0)
+
+    def test_contains(self):
+
+        new_obj = object()
+        ordered_set = OrderedSet(['key', 1, '123', new_obj])
+        items = (
+            ('key', True),
+            ('2', False),
+            ('123', True),
+            (2, False),
+            (new_obj, True),
+
+        )
+
+        for value, output in items:
+            self.check_output(ordered_set.__contains__, output, value)
