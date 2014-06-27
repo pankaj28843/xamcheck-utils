@@ -1,32 +1,22 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from xamcheck.utils.ordered_set import OrderedSet
+from xamcheck.utils.ordered_dict import DefaultOrderedDict
 
 from .base import TestCase
 
 
 class TestOrderedSet(TestCase):
 
-    def test_add(self):
-        ordered_set = OrderedSet()
+    def test_getitem(self):
+        items = [('yellow', 1), ('blue', 2),
+                 ('yellow', 3), ('blue', 4), ('red', 1), (1, 'samsung')]
+        default_ordered_dict = DefaultOrderedDict(list)
+        for k, v in items:
+            default_ordered_dict[k].append(v)
 
-        ordered_set.add("something")
-        self.assertEqual(len(ordered_set), 1)
+        values = default_ordered_dict.__getitem__('yellow')
+        self.assertEqual(values, [1, 3])
 
-        ordered_set.add("something")
-        self.assertEqual(len(ordered_set), 1)
-
-        ordered_set.add(1)
-        self.assertEqual(len(ordered_set), 2)
-
-        new_obj = object()
-        ordered_set.add(new_obj)
-        self.assertEqual(len(ordered_set), 3)
-
-        another_object = object()
-        ordered_set.add(another_object)
-        self.assertEqual(len(ordered_set), 4)
-
-        ordered_set.add(another_object)
-        self.assertEqual(len(ordered_set), 4)
+        values = default_ordered_dict.__getitem__(1)
+        self.assertEqual(values, ['samsung'])
