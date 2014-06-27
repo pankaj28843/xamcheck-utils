@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from xamcheck.utils.words_comparision import OrderedSet
+from xamcheck.utils.ordered_set import OrderedSet
 
 from .base import TestCase
 
