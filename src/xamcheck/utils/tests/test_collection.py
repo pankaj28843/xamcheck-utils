@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from xamcheck.utils.ordered_set import OrderedSet
+from xamcheck.utils.collection import DefaultOrderedDict, OrderedSet
 
 from .base import TestCase
 
@@ -107,3 +107,32 @@ class TestOrderedSet(TestCase):
 
         for value, output in items:
             self.check_output(ordered_set.__contains__, output, value)
+
+
+class TestOrderedDict(TestCase):
+
+    def test_getitem(self):
+        items = [('yellow', 1), ('blue', 2),
+                 ('yellow', 3), ('blue', 4), ('red', 1), (1, 'samsung')]
+        default_ordered_dict = DefaultOrderedDict(list)
+        for k, v in items:
+            default_ordered_dict[k].append(v)
+
+        values = default_ordered_dict.__getitem__('yellow')
+        self.assertEqual(values, [1, 3])
+
+        values = default_ordered_dict.__getitem__(1)
+        self.assertEqual(values, ['samsung'])
+
+        values = default_ordered_dict.__getitem__('lenovo')
+        self.assertEqual(values, [])
+
+    # def test_missing(self):
+    #     items = [('yellow', 1), ('blue', 2), ('yellow', 3),
+    #              ('blue', 4), ('red', 1), (1, 'samsung')]
+    #     default_ordered_dict = DefaultOrderedDict(list)
+    #     for k, v in items:
+    #         default_ordered_dict[k].append(v)
+
+    #     values = default_ordered_dict.__getitem__('titan')
+    #     self.assertEqual(values, [])
