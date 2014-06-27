@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from xamcheck.utils.words_comparision import OrderedSet
+from xamcheck.utils.ordered_set import OrderedSet
 
 from .base import TestCase
 
@@ -88,6 +88,9 @@ class TestOrderedSet(TestCase):
 
         ordered_set.pop()
         self.assertEqual(len(ordered_set), 0)
+
+        with self.assertRaises(KeyError):
+            ordered_set.pop()
 
     def test_contains(self):
 
