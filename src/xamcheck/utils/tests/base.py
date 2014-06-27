@@ -6,11 +6,11 @@ from unittest import TestCase as OriginalTestCase
 
 class TestCase(OriginalTestCase):
 
-    def check_output(self, function, value, output=None):
+    def check_output(self, function, output=None, *value):
         """
         Check that function(value) equals output.  If output is None,
         check that function(value) equals value.
         """
         if output is None:
-            output = value
-        self.assertEqual(function(value), output)
+            output = None
+        self.assertEqual(function(*value), output)

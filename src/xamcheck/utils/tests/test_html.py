@@ -17,4 +17,4 @@ class TestUtilsHTML(TestCase):
         )
 
         for value, output in items:
-            self.check_output(f, value, output)
+            self.check_output(f, output, value)
