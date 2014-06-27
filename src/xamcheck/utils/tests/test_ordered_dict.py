@@ -6,7 +6,7 @@ from xamcheck.utils.ordered_dict import DefaultOrderedDict
 from .base import TestCase
 
 
-class TestOrderedSet(TestCase):
+class TestOrderedDict(TestCase):
 
     def test_getitem(self):
         items = [('yellow', 1), ('blue', 2),
