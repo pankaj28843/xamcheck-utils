@@ -6,15 +6,15 @@ from xamcheck.utils import crypto
 from .base import TestCase
 
 
-class TestUtilsSecure(TestCase):
+class TestCrypto(TestCase):
 
     def test_hash_string(self):
-        f = crypto.hash_string
+        function_crypto = crypto.hash_string
         items = (
-            ('abhyuday', '78b0c82d7c7e4ce0f679541c19f1122ef1bbec657f3b00e34b0b562dca2100abcd8fe70c17adc8477ba7b797053b00f7fc57b82a1465578069300e9f805f292d'),
+            ('samsung', '4c5849d848150bbcbfdd69b5dab68db028c1ce182c7d194e8d4d0cd40052ef6e04a2154eca4fb5a8514acf1714660f9ac186d552f1b33d6ae131b74b3370b2a0'),
             ('12345', '3627909a29c31381a071ec27f7c9ca97726182aed29a7ddd2e54353322cfb30abb9e3a6df2ac2c20fe23436311d678564d0c8d305930575f60e2d3d048184d79'),
-            ('abhyuday12345', '99412cdae9105c1e6796605b8f9ec30be2bbd83587c7c74a5c7d8e34db6cee10bb1f8c7bfd3bdb095f62d7d3491bb465431e4746ebdafdbf2a478a5a9f9555d1'),
+            ('samsung12345', '6e50ef68b36c4206d9f122193f4c622faadd1c4ca8874df3a0cc5e4647e63eb7ee2d88752d25b4801f2bc48c7b4e70a6420949f4fe4c145d9afd5f627cb08507'),
         )
 
         for value, output in items:
-            self.check_output(f, output, value)
+            self.check_output(function_crypto, output, value)
