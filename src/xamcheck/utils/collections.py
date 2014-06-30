@@ -1,5 +1,7 @@
-import collections
+from __future__ import absolute_import
+
 from collections import Callable, OrderedDict
+import collections
 
 
 class OrderedSet(collections.MutableSet):

@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from xamcheck.utils.collection import DefaultOrderedDict, OrderedSet
-
 from .base import TestCase
+from xamcheck.utils.collections import DefaultOrderedDict, OrderedSet
 
 
 class TestOrderedSet(TestCase):
