@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from .base import TestCase
-from xamcheck.utils.collections import DefaultOrderedDict, OrderedSet
+from xamcheck_utils.collections import DefaultOrderedDict, OrderedSet
 
 
 class TestOrderedSet(TestCase):

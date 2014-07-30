@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from unittest import TestCase
 from collections import OrderedDict
-from xamcheck.utils.importlib import import_from_string
+from xamcheck_utils.importlib import import_from_string
 
 
 class TestUtilsimportlib(TestCase):

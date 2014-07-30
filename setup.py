@@ -28,14 +28,14 @@ TESTS_REQUIRE = [
 
 
 setup(
-    name="xamcheck.utils",
+    name="xamcheck_utils",
     version="0.0.1",
     author="Pankaj Singh",
     author_email="pankaj@policyinnovations.in",
     description=("Utility functions used in python projects of Xamcheck."),
     license = "BSD",
     keywords = "xamcheck utility",
-    url = "http://packages.python.org/pypi/xamcheck.utils",
+    url = "http://packages.python.org/pypi/xamcheck_utils",
     long_description=read('README'),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -44,7 +44,7 @@ setup(
     ],
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    namespace_packages=['xamcheck'],
+    namespace_packages=['xamcheck_utils'],
     extras_require=dict(
         test=TESTS_REQUIRE,
     ),

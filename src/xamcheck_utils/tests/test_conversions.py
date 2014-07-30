@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from unittest import TestCase
 
-from xamcheck.utils import conversions
+from xamcheck_utils import conversions
 
 
 class TestUtilsText(TestCase):

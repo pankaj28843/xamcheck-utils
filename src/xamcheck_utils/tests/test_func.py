@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from xamcheck.utils import func
+from xamcheck_utils import func
 
 from .base import TestCase
 

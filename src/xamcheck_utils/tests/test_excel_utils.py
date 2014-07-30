@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.core.exceptions import ValidationError
 
 from unittest import TestCase
-from xamcheck.utils import excel_utils
+from xamcheck_utils import excel_utils
 from os.path import abspath, dirname, join, normpath
 
 # if __name__ == "__main__":

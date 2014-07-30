@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from xamcheck.utils import text
+from xamcheck_utils import text
 
 from .base import TestCase
 
