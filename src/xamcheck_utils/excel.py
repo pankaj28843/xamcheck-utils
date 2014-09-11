@@ -4,7 +4,7 @@ import xlrd
 
 
 def get_workbook(workbook_file):
-    """Opens the excel file whose name is PASSWORD_RESET_TIMEOUT_DAYS"""
+    """Opens the excel file whose name"""
     error_messages = []
 
     try:
@@ -75,7 +75,7 @@ def get_first_worksheet(workbook_file, min_cols=0, min_rows=0):
 
 
 def get_worksheet_by_name_from_file(workbook_file, sheet_name, min_cols=0, min_rows=0):
-    """ Returns the worksheet with the given name and  
+    """ Returns the worksheet with the given name and
         workbook file
     """
     workbook = get_workbook(workbook_file)
