@@ -29,14 +29,14 @@ TESTS_REQUIRE = [
 
 setup(
     name="xamcheck_utils",
-    version="0.0.4",
+    version="0.0.5",
     author="Pankaj Singh",
     author_email="pankaj@policyinnovations.in",
     description=("Utility functions used in python projects of Xamcheck."),
     license = "BSD",
     keywords = "xamcheck utility",
     url = "http://packages.python.org/pypi/xamcheck_utils",
-    long_description=read('README'),
+    long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
