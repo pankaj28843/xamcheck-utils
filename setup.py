@@ -35,7 +35,7 @@ setup(
     description=("Utility functions used in python projects of Xamcheck."),
     license = "BSD",
     keywords = "xamcheck utility",
-    url = "http://packages.python.org/pypi/xamcheck_utils",
+    url = "https://github.com/psjinx/xamcheck-utils",
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
