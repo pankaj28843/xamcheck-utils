@@ -49,7 +49,7 @@ setup(
         test=TESTS_REQUIRE,
     ),
     install_requires=[
-        'Django',
+        'Django<1.7',
         'setuptools',
     ],
     cmdclass={'test': NoseTestCommand},
