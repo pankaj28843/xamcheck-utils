@@ -29,7 +29,7 @@ TESTS_REQUIRE = [
 
 setup(
     name="xamcheck_utils",
-    version="0.0.6",
+    version="0.0.7",
     author="Pankaj Singh",
     author_email="pankaj@policyinnovations.in",
     description=("Utility functions used in python projects of Xamcheck."),
