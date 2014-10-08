@@ -13,8 +13,13 @@ def to_alphanumneric_str(s):
     return "".join(re.findall("[a-zA-Z0-9]+", s)).lower()
 
 
-def drange(start, stop, step):
+def drange(start, stop, step, include_stop=False):
     r = start
-    while r < stop:
-        yield r
-        r += step
+    if include_stop is True:
+        while r <= stop:
+            yield r
+            r += step
+    else:
+        while r < stop:
+            yield r
+            r += step
