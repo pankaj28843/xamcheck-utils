@@ -1,7 +1,18 @@
+# Standard Library
 import os
 
+# Third Party Stuff
+from pip.req import parse_requirements
 from setuptools import find_packages, setup
 from setuptools.command.test import test as TestCommand
+
+# parse_requirements() returns generator of pip.req.InstallRequirement objects
+install_reqs = parse_requirements(
+    os.path.join(os.path.dirname(__file__), 'requirements.txt',),
+    session=0,
+)
+
+install_requires = [str(ir.req) for ir in install_reqs]
 
 
 def read(fname):
@@ -29,7 +40,7 @@ TESTS_REQUIRE = [
 
 setup(
     name="xamcheck_utils",
-    version="0.0.8",
+    version="0.0.9",
     author="Pankaj Singh",
     author_email="pankaj@policyinnovations.in",
     description=("Utility functions used in python projects of Xamcheck."),
@@ -48,10 +59,7 @@ setup(
     extras_require=dict(
         test=TESTS_REQUIRE,
     ),
-    install_requires=[
-        'Django<1.7',
-        'setuptools',
-    ],
+    install_requires=install_requires,
     cmdclass={'test': NoseTestCommand},
     tests_require=TESTS_REQUIRE,
     test_suite = "nose.collector",

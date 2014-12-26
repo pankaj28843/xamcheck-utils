@@ -1,9 +1,14 @@
 from __future__ import unicode_literals
+
+# Standard Library
+from os.path import abspath, dirname, join, normpath
+from unittest import TestCase
+
+# Third Party Stuff
 from django.core.exceptions import ValidationError
 
-from unittest import TestCase
+# Xamcheck-Utils Stuff
 from xamcheck_utils import excel
-from os.path import abspath, dirname, join, normpath
 
 CURRENT_DIR = dirname(abspath(__file__))
 EXCEL_FILES_ROOT = normpath(join(CURRENT_DIR, 'data/excel-files'))

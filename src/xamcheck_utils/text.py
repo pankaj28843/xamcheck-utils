@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import itertools
 
+# Standard Library
+import itertools
 import re
 
+# Third Party Stuff
 from django.utils.html import escape
 
 

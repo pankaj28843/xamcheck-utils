@@ -1,5 +1,7 @@
+# Standard Library
 import re
 
+# Third Party Stuff
 from html2text import HTML2Text
 
 
