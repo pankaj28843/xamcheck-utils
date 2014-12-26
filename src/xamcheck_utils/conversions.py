@@ -1,4 +1,7 @@
+# Standard Library
 import re
+
+# Third Party Stuff
 from django.utils.html import escape
 
 

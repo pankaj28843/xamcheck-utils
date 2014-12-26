@@ -1,5 +1,6 @@
-import re
+# Standard Library
 import itertools
+import re
 
 
 def percent(a, b, r=2):

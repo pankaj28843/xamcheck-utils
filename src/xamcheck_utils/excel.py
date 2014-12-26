@@ -1,6 +1,6 @@
-from django.core.exceptions import ValidationError
-
+# Third Party Stuff
 import xlrd
+from django.core.exceptions import ValidationError
 
 
 def get_workbook(workbook_file):
