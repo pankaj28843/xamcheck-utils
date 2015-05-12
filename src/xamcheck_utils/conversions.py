@@ -1,12 +1,27 @@
 # Standard Library
 import re
+from xml.sax.saxutils import (escape, unescape)
 
-# Third Party Stuff
-from django.utils.html import escape
+
+# escape() and unescape() takes care of &, < and >.
+html_escape_table = {
+    '"': "&quot;",
+    "'": "&apos;"
+}
+
+html_unescape_table = {v: k for k, v in html_escape_table.items()}
+
+
+def html_escape(text):
+    return escape(text, html_escape_table)
+
+
+def html_unescape(text):
+    return unescape(text, html_unescape_table)
 
 
 def unicodify(s, strip=True):  # Testcases not written.
-    s = escape(s)
+    s = html_escape(s)
     if not (isinstance(s, str) or isinstance(s, unicode)):
         return s
     if isinstance(s, unicode):
@@ -61,7 +76,7 @@ REGEXT_COMMA = re.compile(r",")
 
 
 def comma_separated_int_to_list(s):
-    """ Returns list containing integers if numbers are 
+    """ Returns list containing integers if numbers are
         passed as string seperated by commas
     >>> comma_separated_int_to_list('111,12') == [111, 12]
     True
@@ -71,7 +86,7 @@ def comma_separated_int_to_list(s):
 
 
 def comma_separated_float_to_list(s):
-    """ Returns a list containing float values of the 
+    """ Returns a list containing float values of the
         numbers passes as string seperated by commas.
 
     >>> comma_separated_float_to_list('11.1,12') == [11.1, 12.0]
@@ -84,7 +99,7 @@ def comma_separated_float_to_list(s):
 
 
 def comma_separated_str_to_list(s):
-    """Separetes string based on commas and stores each 
+    """Separetes string based on commas and stores each
         string as different strings in a list.
 
     >>> comma_separated_str_to_list('Ram,Laxman') == ['Ram', 'Laxman']
