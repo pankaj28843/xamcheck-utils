@@ -2,11 +2,10 @@
 from __future__ import unicode_literals
 
 # Standard Library
-import itertools
 import re
 
-# Third Party Stuff
-from django.utils.html import escape
+# Local Stuff
+from xamcheck_utils.conversions import html_escape
 
 
 def unicodify(s, strip=True):
@@ -15,11 +14,11 @@ def unicodify(s, strip=True):
     '\\xc3\\x83'
     """
 
-    s = escape(s)
+    s = html_escape(s)
     if not (isinstance(s, str) or isinstance(s, unicode)):
         return s
     if isinstance(s, unicode):
-        s = s.encode('utf8')
+        s = s.encode('utf-8')
     if strip:
         return s.strip()
     else:

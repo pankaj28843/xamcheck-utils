@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 
 # Standard Library
-from os.path import abspath, dirname, join, normpath
+from os.path import (abspath, dirname, join, normpath)
+from exceptions import AttributeError
 from unittest import TestCase
 
-# Third Party Stuff
-from django.core.exceptions import ValidationError
 
 # Xamcheck-Utils Stuff
 from xamcheck_utils import excel
@@ -41,7 +40,7 @@ class TestUtilsExcelUtils(TestCase):
             (worksheet, 3, 0),
         )
         for (worksheet, min_cols, min_rows) in items:
-            with self.assertRaises(ValidationError):
+            with self.assertRaises(AttributeError):
                 excel.validate_worksheet_size(
                     worksheet, min_cols, min_rows)
 
@@ -53,7 +52,7 @@ class TestUtilsExcelUtils(TestCase):
             (excel_file_contents, 'Sheet1', 1, 1),
         )
         for (workbook_file, sheet_name, min_cols, min_rows) in items:
-            with self.assertRaises(ValidationError):
+            with self.assertRaises(AttributeError):
                 excel.get_worksheet_by_name_from_file(
                     workbook_file, sheet_name, min_cols, min_rows)
 
@@ -65,6 +64,6 @@ class TestUtilsExcelUtils(TestCase):
             (excel_file_contents, 1, 1),
         )
         for (workbook_file, min_cols, min_rows) in items:
-            with self.assertRaises(ValidationError):
+            with self.assertRaises(AttributeError):
                 excel.get_first_worksheet(
                     workbook_file, min_cols, min_rows)

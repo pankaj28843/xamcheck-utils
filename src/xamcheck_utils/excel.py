@@ -1,6 +1,6 @@
 # Third Party Stuff
 import xlrd
-from django.core.exceptions import ValidationError
+from exceptions import AttributeError
 
 
 def get_workbook(workbook_file):
@@ -11,7 +11,7 @@ def get_workbook(workbook_file):
         workbook = xlrd.open_workbook(file_contents=workbook_file)
     except xlrd.XLRDError as e:
         error_messages.append(e.message)
-        raise ValidationError(error_messages)
+        raise AttributeError(error_messages)
 
     return workbook
 
@@ -24,7 +24,7 @@ def get_worksheet_by_index(workbook, index=0):
         worksheet = workbook.sheet_by_index(index)
     except IndexError as e:
         error_messages.append(e.message)
-        raise ValidationError(error_messages)
+        raise AttributeError(error_messages)
 
     return worksheet
 
@@ -38,7 +38,7 @@ def get_worksheet_by_name(workbook, sheet_name):
         worksheet = workbook.sheet_by_name(sheet_name)
     except IndexError as e:
         error_messages.append(e.message)
-        raise ValidationError(error_messages)
+        raise AttributeError(error_messages)
 
     return worksheet
 
@@ -55,12 +55,12 @@ def validate_worksheet_size(worksheet, min_cols, min_rows):
     if ncols < min_cols:
         error_messages.append('Invalid worksheet - atleast {0} columns must '
                               'be present.'.format(min_cols))
-        raise ValidationError(error_messages)
+        raise AttributeError(error_messages)
 
     if nrows < min_rows:
         error_messages.append('Invalid worksheet - atleast {0} rows must be '
                               'present.'.format(min_rows))
-        raise ValidationError(error_messages)
+        raise AttributeError(error_messages)
 
 
 def get_first_worksheet(workbook_file, min_cols=0, min_rows=0):
@@ -74,7 +74,8 @@ def get_first_worksheet(workbook_file, min_cols=0, min_rows=0):
     return worksheet
 
 
-def get_worksheet_by_name_from_file(workbook_file, sheet_name, min_cols=0, min_rows=0):
+def get_worksheet_by_name_from_file(
+        workbook_file, sheet_name, min_cols=0, min_rows=0):
     """ Returns the worksheet with the given name and
         workbook file
     """
