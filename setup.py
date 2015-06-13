@@ -4,7 +4,7 @@ import os
 # Third Party Stuff
 from pip.req import parse_requirements
 from setuptools import find_packages, setup
-from setuptools.command.test import test as TestCommand
+from setuptools.command.test import test as test_command
 
 # parse_requirements() returns generator of pip.req.InstallRequirement objects
 install_reqs = parse_requirements(
@@ -19,11 +19,11 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-class NoseTestCommand(TestCommand):
+class NoseTestCommand(test_command):
     # Inspired by the example at https://pytest.org/latest/goodpractises.html
 
     def finalize_options(self):
-        TestCommand.finalize_options(self)
+        test_command.finalize_options(self)
         self.test_args = []
         self.test_suite = True
 
@@ -40,13 +40,13 @@ TESTS_REQUIRE = [
 
 setup(
     name="xamcheck_utils",
-    version="0.0.9",
+    version="0.0.13",
     author="Pankaj Singh",
-    author_email="pankaj@policyinnovations.in",
+    author_email="pankaj@xamcheck.com",
     description=("Utility functions used in python projects of Xamcheck."),
-    license = "BSD",
-    keywords = "xamcheck utility",
-    url = "https://github.com/psjinx/xamcheck-utils",
+    license="BSD",
+    keywords="xamcheck utility",
+    url="https://github.com/psjinx/xamcheck-utils",
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -62,7 +62,7 @@ setup(
     install_requires=install_requires,
     cmdclass={'test': NoseTestCommand},
     tests_require=TESTS_REQUIRE,
-    test_suite = "nose.collector",
+    test_suite="nose.collector",
     include_package_data=True,
     zip_safe=False,
 )
