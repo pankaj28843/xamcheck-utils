@@ -14,6 +14,13 @@ install_reqs = parse_requirements(
 
 install_requires = [str(ir.req) for ir in install_reqs]
 
+test_reqs = parse_requirements(
+    os.path.join(os.path.dirname(__file__), 'pip-requirements/dev.txt',),
+    session=0,
+)
+
+test_requires = [str(ir.req) for ir in test_reqs]
+
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
