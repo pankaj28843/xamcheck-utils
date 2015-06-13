@@ -2,7 +2,7 @@
 import re
 
 # Third Party Stuff
-from django.utils.html import escape
+from markupsafe import escape
 
 
 def unicodify(s, strip=True):  # Testcases not written.
@@ -61,7 +61,7 @@ REGEXT_COMMA = re.compile(r",")
 
 
 def comma_separated_int_to_list(s):
-    """ Returns list containing integers if numbers are 
+    """ Returns list containing integers if numbers are
         passed as string seperated by commas
     >>> comma_separated_int_to_list('111,12') == [111, 12]
     True
@@ -71,7 +71,7 @@ def comma_separated_int_to_list(s):
 
 
 def comma_separated_float_to_list(s):
-    """ Returns a list containing float values of the 
+    """ Returns a list containing float values of the
         numbers passes as string seperated by commas.
 
     >>> comma_separated_float_to_list('11.1,12') == [11.1, 12.0]
@@ -84,7 +84,7 @@ def comma_separated_float_to_list(s):
 
 
 def comma_separated_str_to_list(s):
-    """Separetes string based on commas and stores each 
+    """Separetes string based on commas and stores each
         string as different strings in a list.
 
     >>> comma_separated_str_to_list('Ram,Laxman') == ['Ram', 'Laxman']

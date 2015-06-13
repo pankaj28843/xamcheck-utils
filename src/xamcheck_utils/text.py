@@ -6,7 +6,7 @@ import itertools
 import re
 
 # Third Party Stuff
-from django.utils.html import escape
+from markupsafe import escape
 
 
 def unicodify(s, strip=True):

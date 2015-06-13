@@ -5,7 +5,7 @@ from os.path import abspath, dirname, join, normpath
 from unittest import TestCase
 
 # Third Party Stuff
-from django.core.exceptions import ValidationError
+from xamcheck_utils.exceptions import ValidationError
 
 # Xamcheck-Utils Stuff
 from xamcheck_utils import excel
