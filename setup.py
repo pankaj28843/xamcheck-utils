@@ -2,7 +2,7 @@
 import os
 
 # Third Party Stuff
-from pip.req import parse_requirements
+from pip._internal.req.req_file import parse_requirements
 from setuptools import find_packages, setup
 from setuptools.command.test import test as test_command
 
@@ -12,14 +12,14 @@ install_reqs = parse_requirements(
     session=0,
 )
 
-install_requires = [str(ir.req) for ir in install_reqs]
+install_requires = [str(ir.requirement) for ir in install_reqs]
 
 test_reqs = parse_requirements(
     os.path.join(os.path.dirname(__file__), 'pip-requirements/dev.txt',),
     session=0,
 )
 
-test_requires = [str(ir.req) for ir in test_reqs]
+test_requires = [str(ir.requirement) for ir in test_reqs]
 
 
 def read(fname):
