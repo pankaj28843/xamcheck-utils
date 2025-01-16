@@ -47,13 +47,13 @@ TESTS_REQUIRE = [
 
 setup(
     name="xamcheck_utils",
-    version="0.0.13",
-    author="Pankaj Singh",
-    author_email="pankaj@xamcheck.com",
+    version="0.0.14",
+    author="Pankaj Kumar Singh",
+    author_email="pankaj28843@gmail.com",
     description=("Utility functions used in python projects of Xamcheck."),
     license="BSD",
     keywords="xamcheck utility",
-    url="https://github.com/psjinx/xamcheck-utils",
+    url="https://github.com/pankaj28843/xamcheck-utils",
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
